@@ -82,6 +82,7 @@ export const Tweets = () => {
   };
 
   const isShowBtnLoadMore = page < tweets.length / 3 && filter === "show all";
+  const noFilteredItems = filteredTweets().length === 0 && tweets.length !== 0;
 
   return (
     <>
@@ -103,7 +104,7 @@ export const Tweets = () => {
             </li>
           );
         })}
-        {filteredTweets().length === 0 && <div>No data for your filter</div>}
+        {noFilteredItems && <div>No data for your filter</div>}
       </ul>
       {isShowBtnLoadMore && (
         <button type="button" onClick={loadMore} className="button">
