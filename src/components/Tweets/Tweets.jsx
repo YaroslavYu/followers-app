@@ -1,24 +1,36 @@
-import { Tweet } from "components/Tweet/Tweet";
-
-import { getUsers } from "API/API";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import "./Tweets.css";
-
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
-const dropdownOptions = ["show all", "follow", "followings"];
+import "./Tweets.css";
+
+import { Tweet } from "components/Tweet/Tweet";
+import { getUsers } from "API/API";
+
+const dropdownOptions = [
+  {
+    value: "show all",
+    label: "Show all tweets",
+    className: "dropdown-item",
+  },
+  {
+    value: "follow",
+    label: "Unfollowing tweets",
+    className: "dropdown-item",
+  },
+  {
+    value: "followings",
+    label: "Followings tweets",
+    className: "dropdown-item",
+  },
+];
 
 export const Tweets = () => {
   const [tweets, setTweets] = useState([]);
   const [page, setPage] = useState(1);
-  //   const [totalPages, setTotalPages] = useState(1);
   const [tweetsOnPage, setTweetsOnPage] = useState([]);
-  // const [filteredTweets, setFilteredTweets] = useState([]);
   const [filter, setFilter] = useState("show all");
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,16 +38,12 @@ export const Tweets = () => {
       const setData = async () => {
         try {
           const fetchedTweets = await getUsers();
-
-          //   console.log(fetchedTweets);
           setTweets(fetchedTweets);
-          //   setTotalPages(fetchedTweets.length / 3);
 
           const endSliceTweets =
             fetchedTweets.length < page * 3 ? tweets.length : page * 3;
           const viewedTweets = fetchedTweets.slice(0, endSliceTweets);
           setTweetsOnPage(viewedTweets);
-          //   setFilteredTweets(viewedTweets);
         } catch (error) {
           window.alert(error.message);
         }
@@ -46,7 +54,7 @@ export const Tweets = () => {
         tweets.length < page * 3 ? tweets.length : page * 3;
       setTweetsOnPage(tweets.slice(0, endSliceTweets));
     }
-  }, [page]);
+  }, [page, tweets]);
 
   const loadMore = () => {
     setPage((prevState) => prevState + 1);
@@ -68,26 +76,25 @@ export const Tweets = () => {
         return tweetsOnPage.filter(
           (tweet) => followingUsers.indexOf(tweet.user) === -1
         );
-
       default:
         return tweetsOnPage;
     }
   };
 
-  const isLastPage = page < tweets.length / 3;
+  const isShowBtnLoadMore = page < tweets.length / 3 && filter === "show all";
 
   return (
     <>
-      <button type="button" onClick={() => navigate("/")}>
+      <button type="button" onClick={() => navigate("/")} className="button">
         Back
       </button>
       <Dropdown
         options={dropdownOptions}
         onChange={handleChangeDropdown}
         value={dropdownOptions[0]}
-        placeholder="Select an option"
+        className="dropdown"
       />
-      ;
+
       <ul className="list">
         {filteredTweets().map((tweet) => {
           return (
@@ -96,9 +103,10 @@ export const Tweets = () => {
             </li>
           );
         })}
+        {filteredTweets().length === 0 && <div>No data for your filter</div>}
       </ul>
-      {isLastPage && (
-        <button type="button" onClick={loadMore}>
+      {isShowBtnLoadMore && (
+        <button type="button" onClick={loadMore} className="button">
           Load more
         </button>
       )}

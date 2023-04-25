@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
 
-
 .card {
   position: relative;
   width: 380px;
@@ -11,6 +10,7 @@
 
   padding-top: 28px;
   text-align: center;
+  font-family: 'Montserrat';
 }
 
 .logo {
@@ -18,10 +18,6 @@
   top: 28px;
   left: 28px;
 }
-
-/* .img_container {
-  padding: ;
-} */
 
 .card_img {
   display: block;
@@ -43,55 +39,31 @@
   display: block;
   width: 62px;
   height: 62px;
-  /* margin: 0; */
-  /* padding: 0; */
-  margin-left: auto;
-  margin-right: auto;
 
-  /* border-color: #EBD8FF; */
-  /* border-width: 8px; */
-  /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 85.9232px; */
+  border-radius: 50%;
 }
 
 .card_user-decorate {
   position: relative;
-  /* border-radius: 50%;
-  border-color: white;
-  border-width: 6px; */
-  /* border: 5px solid white */
 }
 
 .avatar_container {
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 80px;
   height: 80px;
-  border: 9px solid;
-  border-color: #EBD8FF;
-  ;
-  border-radius: 50px;
+  overflow: hidden;
+
   margin-left: auto;
   margin-right: auto;
-  /* box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
-    inset 0px -2.19582px 4.39163px #AE7BE3,
-    inset 0px 4.39163px 3.29372px #FBF8FF; */
-  /* background: #471CA9;
-  box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
-    inset 0px -2.19582px 4.39163px #ae7be3,
-    inset 0px 4.39163px 3.29372px #fbf8ff; */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
+
   border-radius: 50%;
   background: #ebd8ff;
   box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
     inset 0px -2.19582px 4.39163px #ae7be3,
     inset 0px 4.39163px 3.29372px #fbf8ff;
-  overflow: hidden;
-  /* position: absolute;
-  top: 180px; */
-  width: 80px;
-  height: 80px;
 }
 
 .card_user-decorate::before,
@@ -117,21 +89,17 @@
 }
 
 .card_text {
-  font-family: 'Montserrat';
-  font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;
   text-transform: uppercase;
-
   color: #EBD8FF;
 }
 
 .follow_button {
-  /* padding: 14px 28px; */
+  font-family: 'Montserrat';
   width: 196px;
   height: 50px;
-  /* background: #EBD8FF; */
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
 }
@@ -144,49 +112,6 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 1.22;
-  /* identical to box height */
-
   text-transform: uppercase;
-
-  /* Landing/button text color */
-
   color: #373737;
 }
-
-
-
-
-
-
-/* 
-
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-} */
