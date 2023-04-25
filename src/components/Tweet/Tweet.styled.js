@@ -1,51 +1,73 @@
-.card {
+import styled from "styled-components";
+
+export const Card = styled.div`
   position: relative;
   width: 380px;
   height: 460px;
-  background: linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%);
+  background: linear-gradient(
+    114.99deg,
+    #471ca9 -0.99%,
+    #5736a3 54.28%,
+    #4b2a99 78.99%
+  );
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
   border-radius: 20px;
 
   padding-top: 28px;
   text-align: center;
-  font-family: 'Montserrat';
-}
+  font-family: "Montserrat";
+`;
 
-.logo {
+export const Logo = styled.img`
   position: absolute;
   top: 28px;
   left: 28px;
-}
+`;
 
-.card_img {
+export const CardImg = styled.img`
   display: block;
   width: 308px;
   height: 168px;
 
   margin-left: auto;
   margin-right: auto;
-}
+`;
 
-.decorate_user_line {
-  width: 380px;
-  height: 8px;
-  background: #EBD8FF;
-  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06), inset 0px -1.71846px 3.43693px #AE7BE3, inset 0px 3.43693px 2.5777px #FBF8FF;
-}
+export const DecorateLines = styled.div`
+  position: relative;
 
-.avatar {
+  ::before,
+  ::after {
+    content: "";
+
+    display: block;
+    position: absolute;
+    top: 36px;
+
+    width: 150px;
+    height: 8px;
+    background: #ebd8ff;
+    box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06),
+      inset 0px -1.71846px 3.43693px #ae7be3,
+      inset 0px 3.43693px 2.5777px #fbf8ff;
+  }
+  ::before {
+    left: 0;
+  }
+  ::after {
+    right: 0;
+  }
+`;
+
+export const Avatar = styled.img`
   display: block;
   width: 62px;
   height: 62px;
 
   border-radius: 50%;
-}
+`;
 
-.card_user-decorate {
-  position: relative;
-}
-
-.avatar_container {
+export const AvatarContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -62,54 +84,26 @@
   box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
     inset 0px -2.19582px 4.39163px #ae7be3,
     inset 0px 4.39163px 3.29372px #fbf8ff;
-}
+`;
 
-.card_user-decorate::before,
-.card_user-decorate::after {
-  content: "";
-
-  display: block;
-  position: absolute;
-  top: 36px;
-
-  width: 150px;
-  height: 8px;
-  background: #EBD8FF;
-  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06), inset 0px -1.71846px 3.43693px #AE7BE3, inset 0px 3.43693px 2.5777px #FBF8FF;
-}
-
-.card_user-decorate::before {
-  left: 0;
-}
-
-.card_user-decorate::after {
-  right: 0;
-}
-
-.card_text {
+export const StyledTextCard = styled.p`
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;
   text-transform: uppercase;
-  color: #EBD8FF;
-}
+  color: #ebd8ff;
+`;
 
-.follow_button {
-  font-family: 'Montserrat';
+export const StyledButton = styled.button`
   width: 196px;
   height: 50px;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
-}
-
-.follow_button.active {
-  background: #5CD3A8;
-}
-
-.button_text {
+`;
+export const StyledBtnText = styled.span`
   font-weight: 600;
   font-size: 18px;
   line-height: 1.22;
   text-transform: uppercase;
   color: #373737;
-}
+`;

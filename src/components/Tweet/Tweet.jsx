@@ -1,9 +1,19 @@
-import "./Tweet.css";
-
 import logo from "img/logo.svg";
 import card_img from "img/up_part_card.png";
 import noAvatar from "img/noAvatar.jpg";
 import { useState } from "react";
+
+import {
+  Card,
+  Logo,
+  CardImg,
+  DecorateLines,
+  Avatar,
+  AvatarContainer,
+  StyledTextCard,
+  StyledButton,
+  StyledBtnText,
+} from "./Tweet.styled";
 
 export const Tweet = ({ tweet: { user, avatar, followers, tweets } }) => {
   const [isFollow, setIsFollow] = useState(() => {
@@ -41,23 +51,25 @@ export const Tweet = ({ tweet: { user, avatar, followers, tweets } }) => {
   };
 
   return (
-    <div className="card">
-      <img src={logo} alt="logo" className="logo" />
-      <img src={card_img} alt="decorate" className="card_img" />
-      <div className="card_user-decorate">
-        <div className="avatar_container">
-          <img src={getAvatar()} alt="avatar" className="avatar" />
-        </div>
-      </div>
-      <p className="card_text">{tweets} tweets</p>
-      <p className="card_text">{countFollowers()} Followers</p>
-      <button
+    <Card>
+      <Logo src={logo} alt="logo" />
+      <CardImg src={card_img} alt="decorate" />
+      <DecorateLines>
+        <AvatarContainer>
+          <Avatar src={getAvatar()} alt="avatar" />
+        </AvatarContainer>
+      </DecorateLines>
+      <StyledTextCard>{tweets} tweets</StyledTextCard>
+      <StyledTextCard>{countFollowers()} Followers</StyledTextCard>
+      <StyledButton
         type="button"
-        className={`follow_button ${isFollow ? "active" : ""}`}
+        style={{
+          backgroundColor: isFollow ? "#5CD3A8" : "#EBD8FF",
+        }}
         onClick={toggleFollow}
       >
-        <span className="button_text">{isFollow ? "following" : "follow"}</span>
-      </button>
-    </div>
+        <StyledBtnText>{isFollow ? "following" : "follow"}</StyledBtnText>
+      </StyledButton>
+    </Card>
   );
 };

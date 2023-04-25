@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
+// import Dropdown from "react-dropdown";
+// import "react-dropdown/style.css";
 
-import "./Tweets.css";
+// import "./Tweets.css";
+
+import { List, StyledButton, StyledDropdown } from "./Tweets.styled";
 
 import { Tweet } from "components/Tweet/Tweet";
 import { getUsers } from "API/API";
@@ -12,17 +14,17 @@ const dropdownOptions = [
   {
     value: "show all",
     label: "Show all tweets",
-    className: "dropdown-item",
+    // className: "dropdown-item",
   },
   {
     value: "follow",
     label: "Unfollowing tweets",
-    className: "dropdown-item",
+    // className: "dropdown-item",
   },
   {
     value: "followings",
     label: "Followings tweets",
-    className: "dropdown-item",
+    // className: "dropdown-item",
   },
 ];
 
@@ -86,17 +88,17 @@ export const Tweets = () => {
 
   return (
     <>
-      <button type="button" onClick={() => navigate("/")} className="button">
+      <StyledButton type="button" onClick={() => navigate("/")}>
         Back
-      </button>
-      <Dropdown
+      </StyledButton>
+      <StyledDropdown
         options={dropdownOptions}
         onChange={handleChangeDropdown}
         value={dropdownOptions[0]}
         className="dropdown"
       />
 
-      <ul className="list">
+      <List>
         {filteredTweets().map((tweet) => {
           return (
             <li key={tweet.id}>
@@ -105,11 +107,11 @@ export const Tweets = () => {
           );
         })}
         {noFilteredItems && <div>No data for your filter</div>}
-      </ul>
+      </List>
       {isShowBtnLoadMore && (
-        <button type="button" onClick={loadMore} className="button">
+        <StyledButton type="button" onClick={loadMore}>
           Load more
-        </button>
+        </StyledButton>
       )}
     </>
   );
