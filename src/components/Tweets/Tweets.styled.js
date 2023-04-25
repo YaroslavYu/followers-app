@@ -1,9 +1,10 @@
-import styled from "styled-components";
-import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
+import styled from 'styled-components';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 export const List = styled.ul`
   list-style: none;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -20,7 +21,7 @@ export const StyledButton = styled.button`
   border-radius: 10.3108px;
   background-color: #ae7be3;
 
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;
