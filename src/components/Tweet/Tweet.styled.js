@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Card = styled.div`
   position: relative;
@@ -15,7 +15,7 @@ export const Card = styled.div`
 
   padding-top: 28px;
   text-align: center;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
 `;
 
 export const Logo = styled.img`
@@ -38,7 +38,7 @@ export const DecorateLines = styled.div`
 
   ::before,
   ::after {
-    content: "";
+    content: '';
 
     display: block;
     position: absolute;
@@ -99,6 +99,7 @@ export const StyledButton = styled.button`
   height: 50px;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
+  background-color: ${({ isFollow }) => (isFollow ? '#5CD3A8' : '#EBD8FF')};
 `;
 export const StyledBtnText = styled.span`
   font-weight: 600;
