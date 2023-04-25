@@ -1,30 +1,23 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-// import Dropdown from "react-dropdown";
-// import "react-dropdown/style.css";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-// import "./Tweets.css";
+import { List, StyledButton, StyledDropdown } from './Tweets.styled';
 
-import { List, StyledButton, StyledDropdown } from "./Tweets.styled";
-
-import { Tweet } from "components/Tweet/Tweet";
-import { getUsers } from "API/API";
+import { Tweet } from 'components/Tweet/Tweet';
+import { getUsers } from 'API/API';
 
 const dropdownOptions = [
   {
-    value: "show all",
-    label: "Show all tweets",
-    // className: "dropdown-item",
+    value: 'show all',
+    label: 'Show all tweets',
   },
   {
-    value: "follow",
-    label: "Unfollowing tweets",
-    // className: "dropdown-item",
+    value: 'follow',
+    label: 'Unfollowing tweets',
   },
   {
-    value: "followings",
-    label: "Followings tweets",
-    // className: "dropdown-item",
+    value: 'followings',
+    label: 'Followings tweets',
   },
 ];
 
@@ -32,7 +25,7 @@ export const Tweets = () => {
   const [tweets, setTweets] = useState([]);
   const [page, setPage] = useState(1);
   const [tweetsOnPage, setTweetsOnPage] = useState([]);
-  const [filter, setFilter] = useState("show all");
+  const [filter, setFilter] = useState('show all');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,7 +52,7 @@ export const Tweets = () => {
   }, [page, tweets]);
 
   const loadMore = () => {
-    setPage((prevState) => prevState + 1);
+    setPage(prevState => prevState + 1);
   };
 
   const handleChangeDropdown = ({ value }) => {
@@ -67,39 +60,38 @@ export const Tweets = () => {
   };
 
   const filteredTweets = () => {
-    const storageFollower = localStorage.getItem("following");
+    const storageFollower = localStorage.getItem('following');
     const followingUsers = storageFollower ? JSON.parse(storageFollower) : [];
     switch (filter) {
-      case "followings":
+      case 'followings':
         return tweetsOnPage.filter(
-          (tweet) => followingUsers.indexOf(tweet.user) !== -1
+          tweet => followingUsers.indexOf(tweet.user) !== -1
         );
-      case "follow":
+      case 'follow':
         return tweetsOnPage.filter(
-          (tweet) => followingUsers.indexOf(tweet.user) === -1
+          tweet => followingUsers.indexOf(tweet.user) === -1
         );
       default:
         return tweetsOnPage;
     }
   };
 
-  const isShowBtnLoadMore = page < tweets.length / 3 && filter === "show all";
+  const isShowBtnLoadMore = page < tweets.length / 3 && filter === 'show all';
   const noFilteredItems = filteredTweets().length === 0 && tweets.length !== 0;
 
   return (
     <>
-      <StyledButton type="button" onClick={() => navigate("/")}>
+      <StyledButton type="button" onClick={() => navigate('/')}>
         Back
       </StyledButton>
       <StyledDropdown
         options={dropdownOptions}
         onChange={handleChangeDropdown}
         value={dropdownOptions[0]}
-        className="dropdown"
       />
 
       <List>
-        {filteredTweets().map((tweet) => {
+        {filteredTweets().map(tweet => {
           return (
             <li key={tweet.id}>
               <Tweet tweet={tweet} />

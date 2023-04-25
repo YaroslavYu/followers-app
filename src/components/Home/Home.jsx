@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-// import "./Home.css";
-import { StyledHomePage } from "./Home.styled";
+import { Link } from 'react-router-dom';
+import { StyledHomePage } from './Home.styled';
 
 export const Home = () => {
   return (
